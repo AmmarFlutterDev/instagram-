@@ -1,7 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/widgets/Grid-view.dart';
+import 'package:instagram_clone/widgets/Grid_view.dart';
 import 'package:instagram_clone/widgets/custom_post.dart';
 
 class Searchscreen extends StatelessWidget {

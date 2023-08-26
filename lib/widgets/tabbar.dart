@@ -1,7 +1,7 @@
 // ignore_for_file: unused_local_variable, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/widgets/Grid-view.dart';
+import 'package:instagram_clone/widgets/Grid_view.dart';
 
 class Tabbar extends StatefulWidget {
   ScrollController? controller;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instagram_clone/screens/bottom_bar.dart';
-import 'package:instagram_clone/widgets/Grid-view.dart';
+import 'package:instagram_clone/widgets/Grid_view.dart';
 
 class Newpostscreen extends StatelessWidget {
   const Newpostscreen({super.key});

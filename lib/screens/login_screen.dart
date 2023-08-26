@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instagram_clone/screens/bottom_bar.dart';
 import 'package:instagram_clone/screens/forgot_pass.dart';
+import 'package:instagram_clone/screens/home.dart';
 import 'package:instagram_clone/widgets/text_field.dart';
 import 'package:instagram_clone/widgets/textbutton.dart';
 
@@ -33,7 +35,6 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 40),
               CustomTextField(
                 hintText: 'Username or Email',
-
                 controller: userNameController,
                 // onSaved: (name) {
                 //   name = userName;
@@ -52,16 +53,21 @@ class LoginScreen extends StatelessWidget {
                 radius: 20,
                 custombutton: 'Log in',
                 color: const Color.fromARGB(255, 0, 140, 255),
-                onPressed: () {
-                  if (userNameController.text == 'ammar' &&
-                      passwordController.text == 'Ammar123') {
-                    Get.offAll(
-                      Bottombar(currentIndex: 0),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('Write correct Username and Password')));
-                  }
+                onPressed: () async {
+                  FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: userNameController.text.trim(),
+                    password: passwordController.text.trim(),
+                  );
+                  Get.off(const Homescreens());
+                  // if (userNameController.text == 'ammar' &&
+                  //     passwordController.text == 'Ammar123') {
+                  //   Get.offAll(
+                  //     Bottombar(currentIndex: 0),
+                  //   );
+                  // } else {
+                  //   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  //       content: Text('Write correct Username and Password')));
+                  // }
                 },
               ),
               const SizedBox(
@@ -79,7 +85,9 @@ class LoginScreen extends StatelessWidget {
                 height: 270,
               ),
               Customtextbuttom(
-                onPressed: () => Get.to(const Createnewaccount()),
+                onPressed: () {
+                  Get.to(const Createnewaccount());
+                },
                 custombutton: 'Create new account',
                 width: double.infinity,
                 radius: 20,

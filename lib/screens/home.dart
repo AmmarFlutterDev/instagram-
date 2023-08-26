@@ -97,7 +97,7 @@ class Homescreens extends StatelessWidget {
               isSponsered: true,
               uploadersubtitle: 'Amazonia',
             ),
-            VideoPlayerWidget(),
+            // VideoPlayerWidget(),
           ],
         ),
       ),
