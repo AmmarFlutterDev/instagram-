@@ -8,9 +8,9 @@ class Statusviewscreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.red,
       appBar: AppBar(
-        leading: const BackButton(
-          
-        ),
+        elevation: 0,
+        backgroundColor: Colors.red,
+        leading: const BackButton(),
       ),
       body: const Center(
           child: Text(

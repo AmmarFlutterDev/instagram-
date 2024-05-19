@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:instagram_clone/screens/bottom_bar.dart';
-import 'package:instagram_clone/screens/forgot_pass.dart';
-import 'package:instagram_clone/screens/registration.dart';
 import 'package:instagram_clone/widgets/text_field.dart';
 import 'package:instagram_clone/widgets/textbutton.dart';
+import 'package:instagram_clone/screens/bottom_bar.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class CreateAccountScreen extends StatelessWidget {
+  const CreateAccountScreen({super.key});
 
   bool isValidEmail(String email) {
     return RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email);
@@ -18,6 +16,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+    TextEditingController confirmPasswordController = TextEditingController();
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -43,15 +42,21 @@ class LoginScreen extends StatelessWidget {
                 controller: passwordController,
                 obscureText: true,
               ),
+              CustomTextField(
+                hintText: 'Confirm Password',
+                controller: confirmPasswordController,
+                obscureText: true,
+              ),
               Customtextbuttom(
                 width: double.infinity,
                 height: 35,
                 radius: 20,
-                custombutton: 'Log in',
+                custombutton: 'Create Account',
                 color: const Color.fromARGB(255, 0, 140, 255),
                 onPressed: () async {
                   String email = emailController.text.trim();
                   String password = passwordController.text.trim();
+                  String confirmPassword = confirmPasswordController.text.trim();
 
                   if (!isValidEmail(email)) {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -60,8 +65,15 @@ class LoginScreen extends StatelessWidget {
                     return;
                   }
 
+                  if (password != confirmPassword) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Passwords do not match')),
+                    );
+                    return;
+                  }
+
                   try {
-                    UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                       email: email,
                       password: password,
                     );
@@ -75,27 +87,6 @@ class LoginScreen extends StatelessWidget {
                     );
                   }
                 },
-              ),
-              const SizedBox(height: 10),
-              TextButton(
-                onPressed: () {
-                  Get.to(const Forgotpassword());
-                },
-                child: const Text(
-                  'Forgot Password?',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              const SizedBox(height: 270),
-              Customtextbuttom(
-                onPressed: () {
-                  Get.to(const CreateAccountScreen());
-                },
-                custombutton: 'Create new account',
-                width: double.infinity,
-                radius: 20,
-                height: 35,
-                color: Colors.transparent,
               ),
             ],
           ),

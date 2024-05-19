@@ -1,3 +1,4 @@
+// ignore: unused_import
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,17 +11,14 @@ flutter build apk
 flutter pub add package_name
 flutter doctor
 flutter create project_name
-flutter --version
+flutter --versiong 
 flutter pub add firebase_core
 */
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  // ignore: prefer_const_constructors
-  runApp(
-    const MyWidget(),
-  );
+  runApp(const MyWidget());
 }
 
 class MyWidget extends StatelessWidget {

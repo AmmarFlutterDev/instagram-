@@ -6,29 +6,27 @@ class CustomTextField extends StatelessWidget {
   String hintText;
   final TextEditingController? controller;
   void Function(String?)? onSaved;
+  bool obscureText;
 
   CustomTextField({
     required this.hintText,
     this.controller,
     this.onSaved,
+    this.obscureText = false,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        bottom: 20,
-      ),
+      padding: const EdgeInsets.only(bottom: 20),
       child: TextFormField(
         controller: controller,
         cursorColor: Colors.grey,
         onSaved: onSaved,
+        obscureText: obscureText,
         decoration: InputDecoration(
           enabled: true,
-
-          // isCollapsed: true,
-          // isDense: true,
           contentPadding: const EdgeInsets.symmetric(
             vertical: 10,
             horizontal: 10,
@@ -41,11 +39,6 @@ class CustomTextField extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
           ),
-          // prefixIcon: const Icon(
-          //   Icons.search,
-          //   size: 20,
-          //   color: Color.fromARGB(255, 73, 67, 67),
-          // ),
           hintText: hintText,
           hintStyle: const TextStyle(color: Color.fromARGB(255, 188, 178, 178)),
         ),

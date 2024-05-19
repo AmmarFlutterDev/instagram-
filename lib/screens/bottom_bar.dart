@@ -9,9 +9,9 @@ import 'package:instagram_clone/screens/search.dart';
 import 'notification.dart';
 
 class Bottombar extends StatefulWidget {
-   int currentIndex;
-   Bottombar({
-    this.currentIndex  = 0,
+  int currentIndex;
+  Bottombar({
+    this.currentIndex = 0,
     super.key,
   });
   @override
@@ -31,7 +31,7 @@ class _BottombarState extends State<Bottombar> {
     return Scaffold(
         backgroundColor: Colors.black,
         body: pages.elementAt(widget.currentIndex),
-        bottomNavigationBar:widget. currentIndex == 2
+        bottomNavigationBar: widget.currentIndex == 2
             ? const SizedBox()
             : BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
@@ -45,25 +45,25 @@ class _BottombarState extends State<Bottombar> {
                 unselectedLabelStyle: const TextStyle(fontSize: 0),
                 onTap: (value) {
                   setState(() {
-                  widget.  currentIndex = value;
+                    widget.currentIndex = value;
                   });
                 },
                 items: [
                   BottomNavigationBarItem(
-                    icon:widget. currentIndex == 0
+                    icon: widget.currentIndex == 0
                         ? const Icon(Icons.home_filled)
                         : const Icon(Icons.home_outlined),
                     label: '',
                   ),
                   BottomNavigationBarItem(
-                      icon:widget. currentIndex == 1
+                      icon: widget.currentIndex == 1
                           ? const Icon(Icons.saved_search)
                           : const Icon(
                               Icons.search,
                             ),
                       label: ''),
                   BottomNavigationBarItem(
-                      icon:widget. currentIndex == 2
+                      icon: widget.currentIndex == 2
                           ? const Icon(Icons.add_box_sharp)
                           : const Icon(
                               Icons.add,

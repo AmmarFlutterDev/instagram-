@@ -5,7 +5,7 @@ import 'package:instagram_clone/screens/conversation.dart';
 import 'package:instagram_clone/screens/login_screen.dart';
 import 'package:instagram_clone/widgets/picture_post_widget.dart';
 import 'package:instagram_clone/widgets/statusavataruploader.dart';
-import 'package:instagram_clone/widgets/video.dart';
+// import 'package:instagram_clone/widgets/video.dart';
 import 'package:instagram_clone/widgets/your_story.dart';
 
 class Homescreens extends StatelessWidget {
